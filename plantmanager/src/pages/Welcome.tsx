@@ -11,7 +11,7 @@ import { Feather } from '@expo/vector-icons'; // Import Feather icon library
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
-import fonts from '../sytles/fonts';
+import fonts from '../styles/fonts';
 
 export function Welcome(){
     return(
