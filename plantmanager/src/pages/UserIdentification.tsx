@@ -6,7 +6,9 @@ import {
     Text,
     TextInput,
     KeyboardAvoidingView,
-    Platform
+    TouchableWithoutFeedback,
+    Platform,
+    Keyboard
 } from 'react-native';
 
 import colors from '../styles/colors';
@@ -60,45 +62,51 @@ export function UserIdentification(){
                 style={styles.container}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
-                <View style={styles.content}>
-                    <View style={styles.form}>
-                        {/* This view was added to make the slide 
-                        of content smoother when keyboard is displayed */}
-                        <View style={styles.header}> 
-                            <Text style={styles.emoji}>
-                                { isFilled ? '😄' : '😃'}
-                            </Text>
+                {/* UX tip - Hide the keyboard when user presses  */}
+                <TouchableWithoutFeedback 
+                    onPress={Keyboard.dismiss}
+                >
 
-                            <Text style={styles.title}>
-                                Como podemos {'\n'}
-                                chamar você?
-                            </Text>
-                            
+                    <View style={styles.content}>
+                        <View style={styles.form}>
+                            {/* This view was added to make the slide 
+                            of content smoother when keyboard is displayed */}
+                            <View style={styles.header}> 
+                                <Text style={styles.emoji}>
+                                    { isFilled ? '😄' : '😃'}
+                                </Text>
+
+                                <Text style={styles.title}>
+                                    Como podemos {'\n'}
+                                    chamar você?
+                                </Text>
+                                
+                            </View>
+
+                            <TextInput 
+                                /* The style change if the user presses 
+                                something but keeps it if field is not null*/
+                                style={[
+                                    styles.input,
+                                    (isFocused || isFilled) && 
+                                    {borderColor: colors.green}
+
+                                ]}
+                                placeholder="Digite o seu nome"
+                                onBlur={handleInputBlur}
+                                onFocus={handleInputFocus}
+                                onChangeText={handleInputChange}
+                            />
+                        <View style={styles.footer}>
+                            <Button
+                                title="Confirmar"
+                                onPress={handleSubmit}
+                            />
+                        </View >
                         </View>
-
-                        <TextInput 
-                            /* The style change if the user presses 
-                            something but keeps it if field is not null*/
-                            style={[
-                                styles.input,
-                                (isFocused || isFilled) && 
-                                {borderColor: colors.green}
-
-                            ]}
-                            placeholder="Digite o seu nome"
-                            onBlur={handleInputBlur}
-                            onFocus={handleInputFocus}
-                            onChangeText={handleInputChange}
-                        />
-                    <View style={styles.footer}>
-                        <Button
-                            title="Confirmar"
-                            onPress={handleSubmit}
-                        />
-                    </View >
+                        
                     </View>
-                    
-                </View>
+                </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
          </SafeAreaView>
     )
