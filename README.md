@@ -6,4 +6,6 @@ Powered by React Native (and Rocket Seat, of course).
 
 Util information:
 > To install icons at expo: `$ expo install @expo/vector-icons`
+> To install the font, use `$ expo install @expo-google-fonts/jost`
+  It is also required to import it on the **App.js** file
 

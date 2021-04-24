@@ -11,6 +11,7 @@ import { Feather } from '@expo/vector-icons'; // Import Feather icon library
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from '../sytles/fonts';
 
 export function Welcome(){
     return(
@@ -63,7 +64,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20, 
-        color: colors.heading
+        color: colors.heading,
+        fontFamily: fonts.text
     },
     button: {
         backgroundColor: colors.green,
