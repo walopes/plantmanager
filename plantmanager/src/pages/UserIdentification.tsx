@@ -5,7 +5,7 @@ import {
     View,
     Text,
     TextInput,
-    KeyboardAvoidingView, //It shows the confirm button when the keyboard is called
+    KeyboardAvoidingView,
     Platform
 } from 'react-native';
 
@@ -14,39 +14,75 @@ import fonts from '../styles/fonts';
 import { Button } from '../components/Button';
 
 export function UserIdentification(){
-    const [isFocused, setIsFocused] = useState(false);
-    function handleInputBlur(){
 
+    /* 
+    CONSTANTS 
+    */
+    const [isFocused, setIsFocused] = useState(false);
+    const [isFilled, setIsFilled] = useState(false);
+    const [name, setName] = useState<string>();
+
+    /*
+    FUNCTION
+    */
+    function handleInputBlur(){
+        setIsFocused(false);
+        setIsFilled(!!name);
     };
     function handleInputFocus(){
-
+        setIsFocused(true);
     };
+
+    /**
+     * This function identifies when the input from user changes.
+     * If there is content on the field, return true, otherwise return false
+     * @param value 
+     */
+    function handleInputChange(value: string){
+        setIsFocused(!!value);
+        setName(value);
+    };
+
+    /*
+    MAIN
+    */
 
     return (
         <SafeAreaView style={styles.container}>
+            {/* Shows the confirm button when the keyboard is called */}
             <KeyboardAvoidingView
                 style={styles.container}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <View style={styles.content}>
                     <View style={styles.form}>
-                        {/* This view was added to make the keyboard show smoother */}
+                        {/* This view was added to make the slide 
+                        of content smoother when keyboard is displayed */}
                         <View style={styles.header}> 
+                            <Text style={styles.emoji}>
+                                { isFilled ? '😄' : '😃'}
+                            </Text>
+
                             <Text style={styles.title}>
                                 Como podemos {'\n'}
                                 chamar você?
                             </Text>
-                            <Text style={styles.emoji}>
-                                😃
-                            </Text>
-
+                            
                         </View>
 
                         <TextInput 
-                            style={styles.input}
+                            /* The style change if the user presses 
+                            something but keeps it if field is not null*/
+                            style={[
+                                styles.input,
+                                (isFocused || isFilled) && 
+                                {borderColor: colors.green}
+
+                            ]}
                             placeholder="Digite o seu nome"
                             onBlur={handleInputBlur}
                             onFocus={handleInputFocus}
+                            onChangeText={handleInputChange}
                         />
                     <View style={styles.footer}>
                         <Button></Button>
@@ -59,6 +95,9 @@ export function UserIdentification(){
     )
 }
 
+/*
+STYLE
+*/
 const styles = StyleSheet.create({
     container: {
         flex: 1,
