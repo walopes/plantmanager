@@ -6,6 +6,7 @@ import {
     FlatList, // Generate the list of elements
     ActivityIndicator
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -44,7 +45,8 @@ export function PlantSelect(){
 
     const [page, setPage] = useState(1); // First page of the filter
     const [loadingMore, setloadingMore] = useState(false);
-    const [loadedAll, setloadedAll] = useState(false);
+
+    const navigation = useNavigation();
 
     function handleEnvironmentSelected(environment: string){
         setEnvironmentSelected(environment);
@@ -58,6 +60,11 @@ export function PlantSelect(){
 
         setFilteredPlants(filtered);
         
+    };
+
+    function handlePlantSelect(plant: PlantProps)
+    {
+        navigation.navigate('PlantSave', { plant });
     };
 
     async function fetchPlants(){
@@ -126,6 +133,7 @@ export function PlantSelect(){
             <View>
                 <FlatList
                     data={(environments)}
+                    keyExtractor={(item) => String(item.key)}
                     renderItem={
                         ({item}) => (
                             <EnvironmentButton  
@@ -144,8 +152,12 @@ export function PlantSelect(){
             <View style={styles.plants}>
                 <FlatList
                     data={filteredPlants}
+                    keyExtractor={(item) => String(item.id)}
                     renderItem={({item}) => (
-                        <PlantCardPrimary data={item} />
+                        <PlantCardPrimary 
+                            data={item} 
+                            onPress={() => handlePlantSelect(item)}
+                        />
                     )}
                     showsVerticalScrollIndicator={false}
                     numColumns={2}
