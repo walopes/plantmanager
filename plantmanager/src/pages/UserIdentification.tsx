@@ -11,11 +11,12 @@ import {
     Keyboard,
     Alert
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Button } from '../components/Button';
-import { useNavigation } from '@react-navigation/native';
 
 export function UserIdentification(){
 
@@ -48,10 +49,14 @@ export function UserIdentification(){
         setName(value);
     };
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if(!name)
             return Alert.alert('Me diz como eu posso te chamar? Nunca te pedi nada 😁');
 
+        /**
+         * Good pattern for key: @{app_name}.{function}
+         */
+        await AsyncStorage.setItem('@plantmanager.user', name);
         navigation.navigate('Confirmation')
     };
 

@@ -22,6 +22,7 @@
   Also, install *json-server* (globally), for fake requests: `$ npm install json-server`
 > For dealing with *.svg*, install the package *react-native-svg*: `$ expo install react-native-svg`
 > Animations `$ expo install lottie-react-native`
+> For using the `$ expo install @react-native-async-storage/async-storage`
 
 ## API
 
