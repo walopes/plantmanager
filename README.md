@@ -18,3 +18,14 @@
 
 > For iPhone X better layout, install the *react native iphone X helper*, with `npm i react-native-iphone-x-helper --save`
 
+> For dealing with server requests, install Axios: `$ npm install axios` 
+  Also, install *json-server* (globally), for fake requests: `$ npm install json-server`
+> For dealing with *.svg*, install the package *react-native-svg*: `$ expo install react-native-svg`
+> Animations `$ expo install lottie-react-native`
+
+## API
+
+> To simulate a API, use `$ json-server src/services/server.json --host {host} --port {port}`, in which *host* is the address of your computer (like 10.0.0.102) and *port* is the port selected (3333, in this case).
+Run the json-server from terminal to receive the requests from `server.json` file.
+
+
