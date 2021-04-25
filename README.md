@@ -15,3 +15,6 @@
 > Routing between pages: `$ npm install @react-navigation/native`
   For running a Expo project, also install: `$ expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view`
   Also, install `$ npm install @react-navigation/stack`
+
+> For iPhone X better layout, install the *react native iphone X helper*, with `npm i react-native-iphone-x-helper --save`
+
