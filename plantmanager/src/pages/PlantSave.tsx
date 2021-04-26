@@ -20,19 +20,9 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import {Button} from '../components/Button';
 
+import { PlantProps, savePlant, loadPlant } from '../libs/storage';
 interface Params {
-    plant: {
-        id: string;
-        name: string;
-        about: string;
-        water_tips: string;
-        photo: string;
-        environments: [string];
-        frequency: {
-            times: number;
-            repeat_every: string;
-        }
-    }
+    plant: PlantProps
 }
 
 export function PlantSave(){
@@ -57,6 +47,17 @@ export function PlantSave(){
 
     function handleOpenDateTimePickerforAndroid(){
         setShowDatePicker(oldState => !oldState);
+    };
+
+    async function handleSave(){
+        try{
+            await savePlant ({
+                ...plant,
+                dateTimeNotification: selectedDateTime
+            });
+        }catch{
+            Alert.alert('Não foi possível salvar!');
+        }
     };
 
     return (
@@ -118,7 +119,7 @@ export function PlantSave(){
 
                 <Button 
                     title="Cadastrar planta"
-                    onPress={() => {}} // Do nothing
+                    onPress={handleSave}
                 />
 
             </View>
