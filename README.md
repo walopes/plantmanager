@@ -20,9 +20,13 @@
 
 > For dealing with server requests, install Axios: `$ npm install axios` 
   Also, install *json-server* (globally), for fake requests: `$ npm install json-server`
+
 > For dealing with *.svg*, install the package *react-native-svg*: `$ expo install react-native-svg`
+
 > Animations `$ expo install lottie-react-native`
+
 > For using the `$ expo install @react-native-async-storage/async-storage`
+
 > Timepicker: `expo install @react-native-community/datetimepicker`
   Also, install `npm install date-fns --save`
 
