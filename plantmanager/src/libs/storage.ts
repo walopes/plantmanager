@@ -12,7 +12,7 @@ export interface PlantProps{
     frequency: {
         times: number;
         repeat_every: string;
-    }
+    };
     dateTimeNotification: Date;
 };
 
