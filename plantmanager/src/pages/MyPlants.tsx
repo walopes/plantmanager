@@ -15,6 +15,7 @@ import waterdrop from '../assets/waterdrop.png'
 import { PlantProps, loadPlant } from '../libs/storage';
 import { Header } from '../components/Header';
 import { pt } from 'date-fns/locale';
+import { PlantCardSecondary } from '../components/PlantCardSecondary';
 
 
 export function MyPlants(){
@@ -67,7 +68,7 @@ export function MyPlants(){
                     data={myPlants}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => (
-                        <Text>oi</Text>
+                        <PlantCardSecondary data={item} />
                     )}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{flex: 1}}
