@@ -32,7 +32,7 @@
 
 > To install the bottom-tabs: `npm install @react-navigation/bottom-tabs`
 
-> Notifications API: expo local notifications
+> Notifications API: `$ expo install notifications`
 
 ## API
 
