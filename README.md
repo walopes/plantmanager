@@ -39,4 +39,6 @@
 > To simulate a API, use `$ json-server src/services/server.json --host {host} --port {port}`, in which *host* is the address of your computer (like 10.0.0.102) and *port* is the port selected (3333, in this case).
 Run the json-server from terminal to receive the requests from `server.json` file.
 
+## Screenshot
 
+![Screenshot of application](./img.png)
